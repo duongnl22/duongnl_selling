@@ -18,21 +18,16 @@ import java.math.BigDecimal;
 public class Cart extends PrimaryEntity {
 
     @Column(name = "cart_quantity")
-    private Integer cartQuantity;
+    private Integer quantity;
 
-    @Column(name = "unit_price")
-    private BigDecimal unitPrice;
-
-    @Column(name = "status")
-    private Integer status;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id" , referencedColumnName = "id")
-    private  Product product;
+    @JoinColumn(name = "bill_id", referencedColumnName = "id")
+    private Bill bill;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "bill_id" , referencedColumnName = "id")
-    private  Bill bill;
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
 
 
 }

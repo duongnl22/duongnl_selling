@@ -37,9 +37,8 @@ public class Bill extends PrimaryEntity {
     private Integer status;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "account_id" , referencedColumnName = "id")
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
-
 
 
 

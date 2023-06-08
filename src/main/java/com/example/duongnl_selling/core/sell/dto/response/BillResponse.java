@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 public class BillResponse {
 
     private Long id;
+
     private String code;
 
     private LocalDateTime createDate;
@@ -31,5 +32,4 @@ public class BillResponse {
 
     private AccountResponse account;
 
-    private CartResponse cartResponse;
 }

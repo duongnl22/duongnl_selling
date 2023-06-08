@@ -30,13 +30,13 @@ public class ProductServiceImpl implements ProductService {
 
     //
 //    @Override
-//    public List<ProductResponse> findAll() {
+//    public List<ProductCartResponse> findAll() {
 //        List<Product> listProduct = productRepository.findAll();
 //
-//        TypeToken<List<ProductResponse>> typeToken = new TypeToken<>() {
+//        TypeToken<List<ProductCartResponse>> typeToken = new TypeToken<>() {
 //        };
 //
-//        List<ProductResponse> listProductResponse = mapper.map(listProduct, typeToken.getType());
+//        List<ProductCartResponse> listProductResponse = mapper.map(listProduct, typeToken.getType());
 //
 //        return listProductResponse;
 //    }

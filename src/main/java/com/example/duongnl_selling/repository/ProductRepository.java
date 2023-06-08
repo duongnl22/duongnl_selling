@@ -1,9 +1,11 @@
 package com.example.duongnl_selling.repository;
 
 import com.example.duongnl_selling.entity.Product;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -26,4 +28,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 //    List<Product> findByNameAndCategoryAndAndConnectAndAndResolution(String category, String name, String connect, String resolution);
 
     List<Product> findByNameContains(String name);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Product p SET p.quantity = :quantity WHERE p.id = :id")
+    void updateQuantity(@Param("quantity") Integer quantity, @Param("id") Long id);
 }

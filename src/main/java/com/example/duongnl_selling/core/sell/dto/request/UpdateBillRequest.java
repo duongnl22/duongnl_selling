@@ -1,6 +1,5 @@
 package com.example.duongnl_selling.core.sell.dto.request;
 
-import com.example.duongnl_selling.core.sell.dto.response.AccountResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +15,7 @@ import java.time.LocalDateTime;
 public class UpdateBillRequest {
 
     private Long id;
+
     private String code;
 
     private LocalDateTime createDate;
@@ -28,5 +28,6 @@ public class UpdateBillRequest {
 
     private Integer status;
 
-    private AccountResponse account;
+    private Long idAccount;
+
 }

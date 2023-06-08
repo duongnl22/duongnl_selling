@@ -1,14 +1,16 @@
 package com.example.duongnl_selling.core.sell.service;
 
-import com.example.duongnl_selling.core.sell.dto.request.ProductRequest;
-import com.example.duongnl_selling.core.sell.dto.response.CartResponse;
-import com.example.duongnl_selling.core.sell.dto.response.ProductResponse;
-import com.example.duongnl_selling.entity.Product;
-
-import java.util.Map;
+import com.example.duongnl_selling.core.sell.dto.request.CartSessionRequest;
+import com.example.duongnl_selling.core.sell.dto.response.CartSessionResponse;
 
 public interface CartService {
 
-    CartResponse findCart();
-    Map<ProductResponse, Integer> addToCart(ProductRequest product , int quantity);
+    CartSessionResponse getCart();
+    String addToCart(CartSessionRequest cartSessionRequest);
+
+    String reduceProduct(CartSessionRequest cartSessionRequest);
+
+    String deleteProduct(Long id);
+
+    String deleteAllProduct();
 }

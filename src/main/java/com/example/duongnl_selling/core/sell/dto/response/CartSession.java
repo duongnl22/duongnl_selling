@@ -5,19 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashMap;
+import java.util.Map;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartResponse {
+public class CartSession {
+    private Map<Long, Integer> products = new HashMap<>();
 
-    private Long id;
-
-    private Integer quantity;
-
-    private BillResponse bill;
-
-    private ProductCartResponse product;
 
 }

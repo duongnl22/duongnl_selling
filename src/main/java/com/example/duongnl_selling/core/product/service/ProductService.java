@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    //    List<ProductResponse> findAll();
+    //    List<ProductCartResponse> findAll();
 //
     List<ProductResponse> findProduct(boolean isDeleted);
 
