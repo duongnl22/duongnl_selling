@@ -4,6 +4,7 @@ import com.example.duongnl_selling.core.product.dto.request.CreateProductRequest
 import com.example.duongnl_selling.core.product.dto.request.UpdateProductRequest;
 import com.example.duongnl_selling.core.product.service.ProductService;
 import com.example.duongnl_selling.infrastructure.config.ResponseObject;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,19 +17,13 @@ public class ProductRestController {
 
     @Autowired
     private ProductService productService;
-
-    //    @GetMapping
-//    public ResponseObject findAll() {
-//        return new ResponseObject(productService.findAll());
-//    }
-//
     @GetMapping("/{isDeleted}")
     public ResponseObject findProduct(@PathVariable("isDeleted") boolean isDeleted) {
         return new ResponseObject(productService.findProduct(isDeleted));
     }
 
     @PostMapping("/create")
-    public ResponseObject create(@RequestBody CreateProductRequest request) {
+    public ResponseObject create(@RequestBody @Valid CreateProductRequest request) {
         return new ResponseObject(productService.save(request));
     }
 

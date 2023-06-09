@@ -33,4 +33,23 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Transactional
     @Query("UPDATE Product p SET p.quantity = :quantity WHERE p.id = :id")
     void updateQuantity(@Param("quantity") Integer quantity, @Param("id") Long id);
+
+
+    @Query(value = "SELECT `product`.`id`," +
+            "    `product`.`product_name`,\n" +
+            "    `product`.`quantity`,\n" +
+            "    `product`.`price`,\n" +
+            "    `product`.`price_after_discount`,\n" +
+            "    `product`.`resolution`,\n" +
+            "    `product`.`connect`,\n" +
+            "    `product`.`create_date`,\n" +
+            "    `product`.`image`,\n" +
+            "    `product`.`is_deleted`,\n" +
+            "    `product`.`category_id`\n" +
+            " FROM `duongnl_sale_phone`.`product`\n" +
+            " WHERE `id` NOT IN (SELECT `id` FROM `duongnl_sale_phone`.`cart` )\n" +
+            " ORDER BY `quantity` DESC\n" +
+            " LIMIT 10;", nativeQuery = true)
+    List<Product> getTop10NotBestSeller();
 }
+

@@ -20,7 +20,6 @@ public class Cart extends PrimaryEntity {
     @Column(name = "cart_quantity")
     private Integer quantity;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bill_id", referencedColumnName = "id")
     private Bill bill;
