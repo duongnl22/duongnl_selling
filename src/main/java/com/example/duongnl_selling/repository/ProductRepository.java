@@ -47,8 +47,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "    `product`.`is_deleted`,\n" +
             "    `product`.`category_id`\n" +
             " FROM `duongnl_sale_phone`.`product`\n" +
-            " WHERE `id` NOT IN (SELECT `id` FROM `duongnl_sale_phone`.`cart` )\n" +
-            " ORDER BY `quantity` DESC\n" +
+            " WHERE `product`.`id` NOT IN (SELECT `cart`.`product_id` FROM `duongnl_sale_phone`.`cart` )" +
+            "AND `product`.`is_deleted` = false \n" +
+            "ORDER BY `product`.`create_date` ASC\n" +
             " LIMIT 10;", nativeQuery = true)
     List<Product> getTop10NotBestSeller();
 }

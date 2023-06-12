@@ -1,16 +1,15 @@
 package com.example.duongnl_selling.core.statistical.service.impl;
 
 import com.example.duongnl_selling.core.statistical.dto.response.CartResponse;
-import com.example.duongnl_selling.core.statistical.dto.response.ProductResponse;
 import com.example.duongnl_selling.core.statistical.service.BestsellerService;
-import com.example.duongnl_selling.entity.Product;
 import com.example.duongnl_selling.repository.CartRepository;
 import com.example.duongnl_selling.repository.ProductRepository;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,23 +24,36 @@ public class BestsellerServiceImpl implements BestsellerService {
     private ModelMapper mapper;
 
     @Override
-    public List<CartResponse> getBestSeller() {
-        List<Object[]> listCart = cartRepository.getTop10BestSeller();
+    public List<CartResponse> getBestSeller(String date) {
+        List<Object[]> listCart = cartRepository.getBestSellerForDate(date);
         List<CartResponse> listCartResponse = new ArrayList<>();
         for (Object[] object : listCart) {
-            Long idProduct = (Long) object[0];
+            String product = (String) object[0];
             Long count = (Long) object[1];
 
-            ProductResponse productResponse = findProduct(idProduct);
-            listCartResponse.add(new CartResponse(productResponse, count));
+            listCartResponse.add(new CartResponse(product, count));
+
+
+        }
+
+        return listCartResponse;
+    }
+
+    @Override
+    public List<CartResponse> getTop10() {
+        List<Object[]> listCart = cartRepository.getBestSeller();
+        List<CartResponse> listCartResponse = new ArrayList<>();
+        for (Object[] object : listCart) {
+            String product = (String) object[0];
+            Long count = (Long) object[1];
+
+            listCartResponse.add(new CartResponse(product, count));
+
+
         }
 
         return listCartResponse;
     }
 
 
-    private ProductResponse findProduct(Long id) {
-        Product product = productRepository.findById(id).get();
-        return mapper.map(product, ProductResponse.class);
-    }
 }

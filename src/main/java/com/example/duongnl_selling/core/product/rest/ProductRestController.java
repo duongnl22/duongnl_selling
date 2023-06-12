@@ -28,7 +28,7 @@ public class ProductRestController {
     }
 
     @PutMapping("/update")
-    public ResponseObject update(@RequestBody UpdateProductRequest request) {
+    public ResponseObject update(@RequestBody @Valid UpdateProductRequest request) {
         return new ResponseObject(productService.update(request));
     }
 

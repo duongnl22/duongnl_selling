@@ -5,15 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartResponse {
 
-    private ProductResponse product;
+    private String product;
 
     private Long count;
+
 
 
 }
