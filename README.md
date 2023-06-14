@@ -10,13 +10,13 @@
                     + Sản phẩm CRUD , xác nhận
                     + Tìm kiếm
                     + Phân trang
-      - Thống kê :
+    - Thống kê :
                     + Thống kê sản phẩm bán chạy theo ngày, tháng, năm
-                     + Thống kê sản phẩm tồn lâu nhất
-     - Người dùng :
+                    + Thống kê sản phẩm tồn lâu nhất
+    - Người dùng :
                    + đăng nhập, đăng ký, đăng xuất
                    + Quên mật khẩu, đổi mật khẩu (Gửi qua email)
-                    + Cập nhật thông tin người dùng
+                   + Cập nhật thông tin người dùng
     - bán hàng:
                 + Thêm sản phẩm vào giỏ hàng (lưu vào phiên)
                 + Tạo hóa đơn thanh toán
